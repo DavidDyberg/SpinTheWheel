@@ -25,7 +25,8 @@ So when the user spins the wheel the code randomly chooses a number, the reward 
 Fastify, Typescript, Node.js, MongoDB
 
 ## ER diagram 
-![er-diagram](image-2.png)
+![er diagram](image-3.png)
+
 
 ## Endpoints
 GET '/'  
@@ -35,33 +36,39 @@ _returns a page where the user can press "spin" and see previous rewards_
 
 ### Response
 - ```message```: A message with users data
-    + ```id```: Users id
-    + ```name```: Users name
-    + ```orders```: Array of order ids for users orders
-    + ```spins```: Users total of unused spins
-    + ```rewards```: Array of users previous rewards
-    + ```reward```: Name of reward
-    + ```created_at```: Date of creation
+    + ```id```: employees id
+    + ```name```: employees name
+    + ```spins```: employees total of unused spins
+    + ```created_at```: date of creation
+      
+- ```message```: A message with rewards data
+    + ```id```: id for reward
+    + ```title```: name of reward
+    + ```user_id```: id of the employee who received the reward
+    + ```delivered```: True/false if reward has been delivered to employee
+    + ```created_at```: date of creation
 
 ### Example
 ```
 {
-    message: "Fetch complete",
-        user: {
-            "_id": "689b0a279e34a7d4303d5223",
-            "name": "Jonas",
-            "orders": [
-                "order_id": "689b0a279e34a7d4303d5223",
-                "order_id": "689b0a279e34a7d4303d5224"
-            ],
-            "spins": 1,
-            "rewards": [
-                "reward": reward_one,
-            ]
+    message: "New order succesful. Order 68b56cea9ea3bfbe378428f9 has granted Jonas with 1 spin!",
+}
+```  
+   
+```
+{
+    message: "Spin succesful",
+        reward: {
+            "_id": "68b56cea9ea3bfbe378428f9",
+            "title": "trisslott",
+            "user_id": "68b56cea9ea3bfbe378428f9",
+            "delivered": 0,
             "created_at": "2025-08-28T07:22:26.951+00:00"
         }
+    
 }
 ```
+
 ## Status codes
 ```201 Created```: Order created  
 ```400 Bad request```: Malformed or missing parameters  
