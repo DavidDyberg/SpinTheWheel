@@ -38,7 +38,7 @@ _returns a page where the user can press "spin" and see previous rewards_
     + ```id```: Users id
     + ```name```: Users name
     + ```orders```: Array of order ids for users orders
-    + ```unused_spins```: Users total of unused spins
+    + ```spins```: Users total of unused spins
     + ```rewards```: Array of users previous rewards
     + ```reward```: Name of reward
     + ```created_at```: Date of creation
@@ -54,7 +54,7 @@ _returns a page where the user can press "spin" and see previous rewards_
                 "order_id": "689b0a279e34a7d4303d5223",
                 "order_id": "689b0a279e34a7d4303d5224"
             ],
-            "unused_spins": 1,
+            "spins": 1,
             "rewards": [
                 "reward": reward_one,
             ]
