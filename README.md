@@ -31,7 +31,9 @@ Fastify, Typescript, Node.js, MongoDB
 GET '/'  
 _returns a page where you can purchase from a specific user_  
 POST '/user?user_id=:id  
-_returns a page where the user can press "spin" and see previous rewards_  
+_creates an order with a user_id and increments users spins with 1_  
+POST '/user?user_id=:id  
+_returns a page where the user can press "spin" and see previous rewards, when used it'll decrement spins column in user_  
 
 ### Response
 - ```message```: A message with users data
@@ -66,6 +68,7 @@ _returns a page where the user can press "spin" and see previous rewards_
 ```201 Created```: Order created  
 ```400 Bad request```: Malformed or missing parameters  
 ```500 Internal Server Error```: User or order not found  
+```404 Not found```: Page not found
 
 
 ## Team
