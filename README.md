@@ -25,7 +25,7 @@ So when the user spins the wheel the code randomly chooses a number, the reward 
 Fastify, Typescript, Node.js, MongoDB
 
 ## ER diagram 
-![diagram](image.png)
+![er-diagram](image-2.png)
 
 ## Endpoints
 GET '/'  
