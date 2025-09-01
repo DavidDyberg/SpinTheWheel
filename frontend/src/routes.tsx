@@ -7,7 +7,7 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/profile",
+    path: "/profile/:slug",
     element: <  Profile />  ,
   },
 ]);

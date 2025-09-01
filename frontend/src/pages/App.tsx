@@ -14,7 +14,7 @@ useEffect(() =>{
       {users.map((user) => (
         <div className="flex flex-col">
           <button className="button">Purchase item from {user}</button>
-          <Link className="link" to="/profiles">log in as {user}</Link>
+          <Link className="link" to={`/profile/${user}`}>log in as {user}</Link>
         </div>
         ))}
 
