@@ -41,6 +41,7 @@ _returns a page where the user can press "spin" and see previous rewards_
     + ```unused_spins```: Users total of unused spins
     + ```rewards```: Array of users previous rewards
     + ```reward```: Name of reward
+    + ```created_at```: Date of creation
 
 ### Example
 ```
@@ -57,6 +58,7 @@ _returns a page where the user can press "spin" and see previous rewards_
             "rewards": [
                 "reward": reward_one,
             ]
+            "created_at": "2025-08-28T07:22:26.951+00:00"
         }
 }
 ```
