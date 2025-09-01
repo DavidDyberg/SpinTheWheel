@@ -6,3 +6,7 @@
 .link {
   @apply rounded-b-2xl bg-slate-100 transition ease-in-out hover:bg-slate-400 border-blue-200 px-2 py-1 cursor-pointer;
 }
+
+.main {
+  @apply flex flex-col justify-center items-center gap-10 h-screen;
+}
