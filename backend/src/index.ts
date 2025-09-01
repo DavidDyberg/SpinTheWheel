@@ -3,6 +3,7 @@ import fastifyMongo from "@fastify/mongodb";
 import dotenv from "dotenv";
 import { getUsers } from "../build/controllers/userController.js";
 import { connectDB } from "../build/db.js";
+import { createOrder } from "../build/controllers/orderController.js";
 
 dotenv.config();
 
@@ -33,6 +34,8 @@ fastify.get("/", function (req, reply) {
 });
 
 fastify.get('/users', getUsers)
+
+fastify.post('/user', createOrder)
 
 fastify.listen({ port: port }, function (err, address) {
   if (err) {
