@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
 .button {
-  @apply rounded-2xl bg-slate-100 transition ease-in-out hover:bg-slate-400 border-blue-200 p-2 cursor-pointer;
+  @apply rounded-t-2xl bg-slate-200 transition ease-in-out hover:bg-slate-400 border-blue-200 p-2 cursor-pointer;
+}
+.link {
+  @apply rounded-b-2xl bg-slate-100 transition ease-in-out hover:bg-slate-400 border-blue-200 px-2 py-1 cursor-pointer;
 }
