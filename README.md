@@ -35,6 +35,9 @@ _creates an order with a user_id and increments users spins with 1_
 POST '/user?user_id=:id  
 _returns a page where the user can press "spin" and see previous rewards, when used it'll decrement spins column in user_  
 
+#### Using insomnia
+If using insomnia you can download this [yaml](./backend/public/Insomnia_2025-09-02.yaml) file and import it into your insomnia to use it and test the endpoints.
+
 ### Response
 - ```message```: A message with users data
     + ```id```: Users id
