@@ -12,12 +12,11 @@ export const createOrder = async (req: FastifyRequest< {Querystring: OrderQuery}
         const { user_id } = req.query
         const newOrder = new Order({user_id})
         await newOrder.save()
-        const order_id = newOrder._id
-        const user =await User.findOneAndUpdate({_id: user_id}, {$addToSet: {orders: order_id}}, { $inc: {spins: 1}})
+        const user =await User.findOneAndUpdate({_id: user_id}, { $inc: {spins: 1}})
         if(!user){
-            res.code(500).send({message: "User not found."})
+            res.status(500).send({message: "User not found."})
         } else {
-            res.code(200).send({message: `New order successful. Order ${order_id} has granted ${user.name} with 1 spin!`})
+            res.status(200).send({message: `New order successful. Order ${newOrder._id} has granted ${user.name} with 1 spin!`})
         }
 
     } catch(err: unknown) {
