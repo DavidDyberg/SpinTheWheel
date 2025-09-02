@@ -1,9 +1,9 @@
 import Fastify from "fastify";
-import fastifyMongo from "@fastify/mongodb";
 import dotenv from "dotenv";
-import { connectDB } from "./db";
 import { getUsers } from "./controllers/userController";
 import { createOrder } from "./controllers/orderController";
+import routes from "./routes";
+import { connectDB } from "./db";
 
 
 dotenv.config();
@@ -20,9 +20,10 @@ fastify.get("/", function (req, reply) {
   reply.send("Hello Ida");
 });
 
-fastify.get('/users', getUsers)
+fastify.register(routes)
+// fastify.get('/users', getUsers)
 
-fastify.post('/user', createOrder)
+// fastify.post('/user', createOrder)
 
 fastify.listen({ port: port }, function (err, address) {
   if (err) {
