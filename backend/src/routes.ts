@@ -6,12 +6,12 @@ function routes(server: FastifyInstance, options: FastifyPluginOptions) {
     server.route({
         method: 'GET',
         url: '/users',
-        handler: (req: FastifyRequest, reply: FastifyReply) => {getUsers}
+        handler: getUsers
     })
     server.route({
         method: 'POST',
         url: '/user',
-        handler: (req: FastifyRequest, reply: FastifyReply) => {createOrder}
+        handler: createOrder
     })
 }
 export default routes

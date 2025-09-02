@@ -20,10 +20,10 @@ fastify.get("/", function (req, reply) {
   reply.send("Hello Ida");
 });
 
-// fastify.register(routes)
-fastify.get('/users', getUsers)
+fastify.register(routes)
+// fastify.get('/users', getUsers)
 
-fastify.post('/user', createOrder)
+// fastify.post('/user', createOrder)
 
 fastify.listen({ port: port }, function (err, address) {
   if (err) {
