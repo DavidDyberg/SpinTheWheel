@@ -1,9 +1,10 @@
 import Fastify from "fastify";
 import fastifyMongo from "@fastify/mongodb";
 import dotenv from "dotenv";
-import { getUsers } from "../build/controllers/userController.js";
-import { connectDB } from "../build/db.js";
-import { createOrder } from "../build/controllers/orderController.js";
+import { connectDB } from "./db";
+import { getUsers } from "./controllers/userController";
+import { createOrder } from "./controllers/orderController";
+
 
 dotenv.config();
 
