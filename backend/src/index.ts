@@ -13,20 +13,6 @@ const fastify = Fastify({
 
 const port = 3000;
 
-// fastify.register(fastifyMongo, {
-//   forceClose: true,
-//   url: process.env.MONGODB_URL as string,
-//   database: "spin_the_wheel",
-// });
-
-// fastify.ready((err) => {
-//   if (fastify.mongo.db) {
-//     console.log(`Connected to MongoDB: ${fastify.mongo.db.databaseName}`);
-//   } else {
-//     console.error("Failed to connect to MongoDB", err);
-//   }
-// });
-
 connectDB()
 
 fastify.get("/", function (req, reply) {
