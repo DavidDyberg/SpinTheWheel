@@ -1,5 +1,5 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
-import { User } from "../models/userModel.js"
+import { User } from "../models/userModel"
 
 export const getUsers = async (req: FastifyRequest, res: FastifyReply) => {
     const users = await User.find();

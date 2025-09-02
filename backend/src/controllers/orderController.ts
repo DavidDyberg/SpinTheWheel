@@ -1,6 +1,6 @@
 import type { FastifyReply, FastifyRequest } from "fastify"
-import { User } from "../models/userModel.js"
-import { Order } from "../models/orderModel.js"
+import { User } from "../models/userModel"
+import { Order } from "../models/orderModel"
 
 
 interface OrderQuery {
