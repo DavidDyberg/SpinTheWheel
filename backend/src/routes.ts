@@ -1,17 +1,28 @@
-import { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from "fastify";
+import {
+  FastifyInstance,
+  FastifyPluginOptions,
+  FastifyReply,
+  FastifyRequest,
+} from "fastify";
 import { getUsers } from "./controllers/userController";
 import { createOrder } from "./controllers/orderController";
+import { getUserRewards } from "./controllers/rewardsController";
 
 function routes(server: FastifyInstance, options: FastifyPluginOptions) {
-    server.route({
-        method: 'GET',
-        url: '/users',
-        handler: getUsers
-    })
-    server.route({
-        method: 'POST',
-        url: '/user',
-        handler: createOrder
-    })
+  server.route({
+    method: "GET",
+    url: "/users",
+    handler: getUsers,
+  });
+  server.route({
+    method: "POST",
+    url: "/user",
+    handler: createOrder,
+  });
+  server.route({
+    method: "GET",
+    url: "/users/:user_id/rewards",
+    handler: getUserRewards,
+  });
 }
-export default routes
+export default routes;
