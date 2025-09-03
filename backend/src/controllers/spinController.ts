@@ -1,8 +1,13 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { Rewards } from "../models/rewardsModel";
+import { User } from "../models/userModel";
 
 export const spinAction = async (req: FastifyRequest, res: FastifyReply) => {
   const { user_id } = req.params as { user_id: string };
+  
+
+  await User.findOneAndUpdate({_id: user_id,},{$inc: {spins: -1}})
+
   let userReward = "";
 
   const num = Math.floor(Math.random() * 100);
