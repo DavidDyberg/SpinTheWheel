@@ -26,7 +26,7 @@ export const App = () => {
 
         <div className="flex flex-col" key={index}>
           <button className="button">Purchase item from {user.name}</button>
-          <Link className="link" to={`/profile/${user.name}/${user.spins}`}>
+          <Link className="link" to={`/profile/${user.id}`}>
             log in as {user.name}
           </Link>
         </div>
