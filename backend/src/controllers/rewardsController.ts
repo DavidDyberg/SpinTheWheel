@@ -18,7 +18,7 @@ export const getUserRewards = async (
 
     if (!rewards || rewards.length === 0) {
       return res.status(404).send({
-        message: "No rewards found for this user",
+        message: "This user has no rewards",
         user_id,
       });
     }
