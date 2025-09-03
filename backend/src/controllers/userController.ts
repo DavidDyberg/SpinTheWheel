@@ -8,3 +8,15 @@ export const getUsers = async (req: FastifyRequest, res: FastifyReply) => {
   }
   res.send(users);
 };
+
+export const getUser = async (req: FastifyRequest, res: FastifyReply) => {
+  const { user_id } = req.params as { user_id: string };
+
+  const user = await User.findById(user_id);
+
+  if (!user) {
+    res.status(404).send({ message: "This user do not exist" });
+  }
+
+  res.send(user);
+};
