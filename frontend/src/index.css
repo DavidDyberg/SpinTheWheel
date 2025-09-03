@@ -8,5 +8,5 @@
 }
 
 .main {
-  @apply flex flex-col justify-center items-center gap-10 h-screen;
+  @apply flex flex-col justify-center items-center gap-10;
 }
