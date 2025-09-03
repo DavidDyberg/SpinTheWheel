@@ -1,33 +1,38 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
-import { getUsers } from "./controllers/userController";
-import { createOrder } from "./controllers/orderController";
 import routes from "./routes";
 import { connectDB } from "./db";
-
+import cors from "@fastify/cors";
 
 dotenv.config();
+async function startServer() {
+  const fastify = Fastify({
+    logger: true,
+  });
+  await fastify.register(cors, {
+    origin: "http://localhost:5173", 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+  });
 
-const fastify = Fastify({
-  logger: true,
-});
+  const port = 3000;
 
-const port = 3000;
+  connectDB();
 
-connectDB()
+  fastify.get("/", async (req, reply) => {
+    reply.send("Hello Ida");
+  });
 
-fastify.get("/", function (req, reply) {
-  reply.send("Hello Ida");
-});
+  fastify.register(routes);
+  // fastify.get('/users', getUsers)
 
-fastify.register(routes)
-// fastify.get('/users', getUsers)
+  // fastify.post('/user', createOrder)
 
-// fastify.post('/user', createOrder)
+  fastify.listen({ port: port }, function (err, address) {
+    if (err) {
+      fastify.log.error(err);
+      process.exit(1);
+    }
+  });
+}
 
-fastify.listen({ port: port }, function (err, address) {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-});
+startServer();
