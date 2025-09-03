@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-export function App() {
-  const [users, setUsers] = useState<string[]>([]);
+import type { User } from "../type";
+
+export const App = () => {
+  const [users, setUsers] = useState<User[]>([]);
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -15,14 +17,17 @@ export function App() {
     };
     fetchUsers();
   }, []);
+
+
   return (
     <div className="main">
       <h1 className="text-2xl underline">Spin the wheel or die?</h1>
-      {users.map((user) => (
-        <div className="flex flex-col">
-          <button className="button">Purchase item from {user}</button>
-          <Link className="link" to={`/profile/${user}`}>
-            log in as {user}
+      {users.map((user, index) => (
+
+        <div className="flex flex-col" key={index}>
+          <button className="button">Purchase item from {user.name}</button>
+          <Link className="link" to={`/profile/${user.name}/${user.spins}`}>
+            log in as {user.name}
           </Link>
         </div>
       ))}
