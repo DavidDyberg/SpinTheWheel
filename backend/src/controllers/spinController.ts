@@ -29,5 +29,5 @@ export const spinAction = async (req: FastifyRequest, res: FastifyReply) => {
 
     const newReward = new Rewards({user_id: user_id, title: userReward })
     await newReward.save()
-    res.status(201).send({message: `${userReward} won!`})
+    res.status(201).send({message: `You won a ${userReward}!`})
 }
