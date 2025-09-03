@@ -1,15 +1,10 @@
-import {
-  FastifyInstance,
-  FastifyPluginOptions,
-  FastifyReply,
-  FastifyRequest,
-} from "fastify";
+import { FastifyInstance } from "fastify";
 import { getUsers } from "./controllers/userController";
 import { createOrder } from "./controllers/orderController";
 import { getUserRewards } from "./controllers/rewardsController";
 import { spinAction } from "./controllers/spinController";
 
-function routes(server: FastifyInstance, options: FastifyPluginOptions) {
+function routes(server: FastifyInstance) {
   server.route({
     method: "GET",
     url: "/users",
@@ -26,9 +21,9 @@ function routes(server: FastifyInstance, options: FastifyPluginOptions) {
     handler: getUserRewards,
   });
   server.route({
-    method: 'GET',
-    url:'/users/:user_id/spin',
-    handler: spinAction
-  })
+    method: "GET",
+    url: "/users/:user_id/spin",
+    handler: spinAction,
+  });
 }
 export default routes;
