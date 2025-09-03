@@ -10,8 +10,8 @@ async function startServer() {
     logger: true,
   });
   await fastify.register(cors, {
-    origin: "http://localhost:5173", 
-    methods: ["GET", "POST", "PUT", "DELETE"], 
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
   });
 
   const port = 3000;
@@ -23,9 +23,6 @@ async function startServer() {
   });
 
   fastify.register(routes);
-  // fastify.get('/users', getUsers)
-
-  // fastify.post('/user', createOrder)
 
   fastify.listen({ port: port }, function (err, address) {
     if (err) {
