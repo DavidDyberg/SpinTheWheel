@@ -1,12 +1,11 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { User } from "../models/userModel";
 import { Rewards } from "../models/rewardsModel";
 
 export const spinAction = async (req: FastifyRequest, res: FastifyReply) => {
 
     const { user_id } = req.params as {user_id: string}
     console.log(user_id)
-    let userReward =''
+    let userReward = ''
     
     const num = Math.floor(Math.random()*100)
     console.log(num)
@@ -30,5 +29,5 @@ export const spinAction = async (req: FastifyRequest, res: FastifyReply) => {
 
     const newReward = new Rewards({user_id: user_id, title: userReward })
     await newReward.save()
-    console.log(newReward)
+    res.status(201).send({message: `You won a ${userReward}!`})
 }
