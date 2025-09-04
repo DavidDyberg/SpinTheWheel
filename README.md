@@ -29,15 +29,24 @@ Fastify, Typescript, Node.js, MongoDB
 
 
 ## Endpoints
-GET '/'  
-_returns a page where you can purchase from a specific user_  
-POST '/user?user_id=:id  
-_creates an order with a user_id and increments users spins with 1_  
-POST '/user?user_id=:id  
-_returns a page where the user can press "spin" and see previous rewards, when used it'll decrement spins column in user_  
+
+GET '/users'  
+_returns all users_  
+  
+GET '/users/:user_id  
+_returns a user_  
+  
+POST '/user?user_id=_user_id'
+_creates order and increments users spins with 1_  
+  
+GET '/users/:user_id/rewards  
+_returns all rewards for a user_  
+  
+GET 'users/:user_id/spin  
+_creates a new reward with the users id attached and users spins decrements with 1_  
 
 
-### Response
+### Response examples
 - ```message```: A message with users data
     + ```id```: employees id
     + ```name```: employees name
@@ -45,38 +54,56 @@ _returns a page where the user can press "spin" and see previous rewards, when u
     + ```created_at```: date of creation
       
 - ```message```: A message with rewards data
-    + ```id```: id for reward
-    + ```title```: name of reward
-    + ```user_id```: id of the employee who received the reward
-    + ```delivered```: True/false if reward has been delivered to employee
-    + ```created_at```: date of creation
+    + ```user_id```: users id
+    + ```user_name```: users name
+    + ```rewards_count```: count of rewards for user
+    + ```rewards```: array of rewards
+        + ```id```: rewards id
+        + ```user_id```: users id
+        + ```title```: name of reward
+        + ```user_id```: id of the employee who received the reward
+        + ```delivered```: True/false if reward has been delivered to employee
+        + ```created_at```: date of creation
 
-### Example
+### Examples
+POST '/user?user_id=_user_id'  
 ```
 {
     message: "New order succesful. Order 68b56cea9ea3bfbe378428f9 has granted Jonas with 1 spin!",
 }
 ```  
-   
+  
+GET '/users/:user_id/spin
 ```
 {
-    message: "Spin succesful",
-        reward: {
-            "_id": "68b56cea9ea3bfbe378428f9",
-            "title": "trisslott",
-            "user_id": "68b56cea9ea3bfbe378428f9",
-            "delivered": 0,
-            "created_at": "2025-08-28T07:22:26.951+00:00"
-        }
-    
+	"message": "You won a Bali resa!"
 }
+
+```  
+GET '/users/:user_id/rewards  
 ```
+{
+	"user_id": "68b56cea9ea3bfbe378428f9",
+	"user_name": "Jonas",
+	"rewards_count": 1,
+	"rewards": [
+		{
+			"_id": "68b813ec7b573ede07f377b2",
+			"user_id": "68b56cea9ea3bfbe378428f9",
+			"title": "Test Reward - Free Coffee",
+			"delivered": false,
+			"created_at": "2024-01-15T10:30:00.000Z"
+		}
+	]
+}  
+``` 
 
 ## Status codes
+```200 OK```: Request succesful  
 ```201 Created```: Order created  
 ```400 Bad request```: Malformed or missing parameters  
+```404 Not found```: Page not found  
 ```500 Internal Server Error```: User or order not found  
-```404 Not found```: Page not found
 
 
 ## Team

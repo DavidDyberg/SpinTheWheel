@@ -12,6 +12,7 @@ async function startServer() {
   await fastify.register(cors, {
     origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
   });
 
   const port = 3000;
