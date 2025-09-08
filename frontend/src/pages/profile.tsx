@@ -70,7 +70,13 @@ export const Profile = () => {
         alt="a wheel"
         className={`h-48 wheel ${isSpinning ? "animate-spin" : ""}`}
       />
-      <p>Your remaining spins: {user?.spins}</p>
+
+      {user?.spins === 0 ? (
+        <p>You have no spins left, please make a purchase to get a new spin.</p>
+      ) : (
+        <p>Your remaining spins: {user?.spins}</p>
+      )}
+
       <button
         onClick={SpinWheel}
         className="bg-blue-400 rounded-2xl p-4 cursor-pointer transition ease-in-out hover:bg-blue-600"
