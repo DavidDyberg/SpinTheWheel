@@ -6,6 +6,7 @@ export const Profile = () => {
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<User>();
   const [history, setHistory] = useState<Reward[]>([]);
+  const [isSpinning, setIsSpinning] = useState(false);
 
   const getUser = async () => {
     if (!id) return;
@@ -43,6 +44,12 @@ export const Profile = () => {
   const SpinWheel = async () => {
     if (!id) return;
     try {
+      setIsSpinning(true);
+
+      setTimeout(() => {
+        setIsSpinning(false);
+      }, 1000);
+
       const res = await fetch(`http://[::1]:3000/users/${id}/spin`);
       const data = await res.json();
       console.log("spin result", data);
@@ -61,9 +68,17 @@ export const Profile = () => {
       <img
         src="https://cdn.pixabay.com/photo/2021/12/16/03/04/spin-the-wheel-6873663_1280.png"
         alt="a wheel"
-        className="h-48 wheel"
+        className={`h-48 wheel ${
+          isSpinning && user?.spins != 0 ? "animate-spin" : ""
+        }`}
       />
-      <p>Your remaining spins: {user?.spins}</p>
+
+      {user?.spins === 0 ? (
+        <p>You have no spins left, please make a purchase to get a new spin.</p>
+      ) : (
+        <p>Your remaining spins: {user?.spins}</p>
+      )}
+
       <button
         onClick={SpinWheel}
         className="bg-blue-400 rounded-2xl p-4 cursor-pointer transition ease-in-out hover:bg-blue-600"
