@@ -68,7 +68,9 @@ export const Profile = () => {
       <img
         src="https://cdn.pixabay.com/photo/2021/12/16/03/04/spin-the-wheel-6873663_1280.png"
         alt="a wheel"
-        className={`h-48 wheel ${isSpinning ? "animate-spin" : ""}`}
+        className={`h-48 wheel ${
+          isSpinning && user?.spins != 0 ? "animate-spin" : ""
+        }`}
       />
 
       {user?.spins === 0 ? (
